@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <title>Marcela's Web Store</title>
+    <meta name="author" content="Marcela Barbosa">
+    <meta charset="UFT-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Webpage of an Online Store">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- External stylesheet -->
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One|Sanchez&display=swap" rel="stylesheet">
+</head>
+
+<body onload="initialize();">
+
+    <header>
+        <div id="header">
+            <h1><img src="img/logo.png" id="logo">Marcela's Web Store
+            <a href="#cartMenu"><img src="img/cart.png" id="cart" alt="Cart"></a>
+            </h1>
+
+            <!-- Display date and hour -->
+            <span id="displayTime"></span>
+
+            <!-- Menu -->
+            <nav>
+                <ul>
+                    <li><a href="#wrap">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#cartMenu">Cart</a></li>
+                    <li><a href="#review">Product Review</a></li>
+                </ul>
+            </nav>
+            <hr>
+        </div>
+    </header>
+
+    <div id="wrap">
+            <div class="image"></div>
+
+            <!-- Menu cart anchor   -->
+            <span class="anchor">
+                <a name="products"> </a>
+            </span> 
+
+            <div id="displaySelectCat">
+                <span>Category:</span> <select class="custom-select" id="categoryOption" onchange="displayStoreItems();">
+                    <option selected>All</option>
+                    <option>Dress</option>
+                    <option>Jeans</option>
+                    <option>Shoes</option>
+                    <option>Skirts</option>
+                    <option>T-Shirt</option>
+                </select>
+            </div>
+
+            <div id="displaySelectCur">
+                <span>Currency:</span> <select class="custom-select" id="chooseCurrency" onchange="displayStoreItems(); displayCartItems(); calculateCart(); itemDetails();">
+                    <option selected>CAD</option>
+                    <option>USD</option>
+                </select>
+            </div>
+            <div id="displayItemTable"></div>
+
+            <!-- Menu cart anchor   -->
+            <span class="anchor">
+                <a name="cartMenu"> </a>
+            </span> 
+        
+            <!-- Area to include and remove product from cart -->
+            <fieldset>
+                <legend>Store Cart</legend>
+                <p><span>Product ID:</span>
+                 <input type="text" id="prodIdInput" onfocus="clearProdMsg()"><span id="cartIdValidation"></span></p>
+                <p><span>Quantity:</span>
+                <input type="text" id="quantItemInput" onfocus="clearQuantMsg()" value="0"><span id="cartQuantValidation"></span></p>
+                <p><input class=button type="button" value="Inlude Item" onclick="addItemToCart();" />
+                <input class=button type="button" value="Remove Item" onclick="removeItemFromCart();" /></p>
+                
+                <p><div id="dispCartInfoHead">
+                    <h3>Your Shopping Cart</h3>
+                    <hr>
+                </div></p>
+                <p><div id="displayCartInfo"></div></p>
+                
+                <p><div id="displayTotalHead"></p>
+                    <p><h3>Costs</h3></p>
+                    <hr>
+                </div>
+                <div id="displayTotal"></div>
+            </fieldset>
+
+            <!-- Menu review anchor   -->
+            <span class="anchor">
+                <a name="review"> </a>
+            </span>
+            
+            <!-- Area product review and display information of the product -->
+            <fieldset>
+                <legend>Store Product Review</legend>
+                
+                <p><span>Product ID:</span>
+                <input type="text" id="reviewIdInput" onfocus="clearProdRevMsg()"><span id="reviewValidation"></span></p>
+                
+                <p><span>Review:</span>
+                <input type="text" id="reviewInput" onfocus="clearRevMsg()"><span id="reviewValidationText"></span></p>
+                
+                <p><input class=button type="button" value="Item Review" onclick="itemDetails();" />
+                <input class=button type="button" value="Add Review" onclick="addReview();" /></p>
+                <div id="dispItemRevDetHead">
+                    <p><h3>Item Details</h3>
+                    <hr>
+                </div>
+                <div id="displayItemReview"></div>
+                <p><div id="dispItemRevHead">
+                    <p><h3>Item Review</h3>
+                    <hr>
+                </div></p>
+                <div id="storeItemReview"></div>
+            </fieldset>
+    </div>
+
+    <!-- Creation empty arrays  -->
+    <script>
+        var arrayItems = [];
+        var arrayCart = [];
+    </script>
+
+    <!-- Java script links  -->
+    <script type="text/javascript" src="js/store.js"></script>
+    <script type="text/javascript" src="js/cart.js"></script>
+    <script type="text/javascript" src="js/onload.js"></script>
+    <script type="text/javascript" src="js/validations.js"></script>
+    <script type="text/javascript" src="js/currency.js"></script>
+    <script type="text/javascript" src="js/clear.js"></script>
+</body>
+
+<!-- Footer area  -->
+<footer>
+    <p class="footer">Copyright 2019. Fanshawe College - <a href="mailto:m_coelhobarbosa@hotmail.com" target="_blank"> Contact us</a></p>
+    <p class="footer">Image Source: <a href="https://unsplash.com/"> https://unsplash.com/</a></p>
+</footer>
+
+</html>
